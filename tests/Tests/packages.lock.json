@@ -1320,6 +1320,19 @@
           "xunit.abstractions": "2.0.1"
         }
       },
+      "opensearch.client": {
+        "type": "Project",
+        "dependencies": {
+          "OpenSearch.Net": "1.0.0"
+        }
+      },
+      "opensearch.client.jsonnetserializer": {
+        "type": "Project",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1",
+          "OpenSearch.Client": "1.0.0"
+        }
+      },
       "opensearch.net": {
         "type": "Project",
         "dependencies": {
@@ -1332,19 +1345,6 @@
         "type": "Project",
         "dependencies": {
           "OpenSearch.Net": "1.0.0"
-        }
-      },
-      "OpenSearch.Client": {
-        "type": "Project",
-        "dependencies": {
-          "OpenSearch.Net": "1.0.0"
-        }
-      },
-      "OpenSearch.Client.JsonNetSerializer": {
-        "type": "Project",
-        "dependencies": {
-          "Newtonsoft.Json": "12.0.1",
-          "OpenSearch.Client": "1.0.0"
         }
       },
       "tests.configuration": {

@@ -857,25 +857,25 @@
           "xunit.extensibility.core": "[2.3.1]"
         }
       },
+      "opensearch.client": {
+        "type": "Project",
+        "dependencies": {
+          "OpenSearch.Net": "1.0.0"
+        }
+      },
+      "opensearch.client.jsonnetserializer": {
+        "type": "Project",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1",
+          "OpenSearch.Client": "1.0.0"
+        }
+      },
       "opensearch.net": {
         "type": "Project",
         "dependencies": {
           "Microsoft.CSharp": "4.6.0",
           "System.Buffers": "4.5.1",
           "System.Diagnostics.DiagnosticSource": "5.0.0"
-        }
-      },
-      "OpenSearch.Client": {
-        "type": "Project",
-        "dependencies": {
-          "OpenSearch.Net": "1.0.0"
-        }
-      },
-      "OpenSearch.Client.JsonNetSerializer": {
-        "type": "Project",
-        "dependencies": {
-          "Newtonsoft.Json": "12.0.1",
-          "OpenSearch.Client": "1.0.0"
         }
       },
       "tests.configuration": {
