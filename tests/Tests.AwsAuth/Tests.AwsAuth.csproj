@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <DebugSymbols>True</DebugSymbols>
+    <IsTestProject>True</IsTestProject>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TestPackageVersion)'!=''">
+    <PackageReference Include="OpenSearch.Net.AwsAuth" Version="$(TestPackageVersion)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TestPackageVersion)'==''">
+    <ProjectReference Include="$(SolutionRoot)\src\OpenSearch.Net.AwsAuth\OpenSearch.Net.AwsAuth.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionRoot)\tests\Tests.Core\Tests.Core.csproj" />
+
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <PackageReference Include="xunit.extensibility.execution" Version="2.3.1" />
+  </ItemGroup>
+</Project>
