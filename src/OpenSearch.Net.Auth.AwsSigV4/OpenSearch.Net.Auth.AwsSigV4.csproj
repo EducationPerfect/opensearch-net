@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <PackageId>OpenSearch.Net.AwsAuth</PackageId>
-    <Title>OpenSearch.Net.AwsAuth</Title>
+    <PackageId>OpenSearch.Net.Auth.AwsSigV4</PackageId>
+    <Title>OpenSearch.Net.Auth.AwsSigV4</Title>
     <PackageTags>opensearch;opensearch;search;lucene;client;opensearch.client</PackageTags>
     <Description>
       Adds support for AWS SigV4 authentication to the OpenSearch.Net client.

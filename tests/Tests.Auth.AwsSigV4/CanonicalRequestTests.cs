@@ -25,7 +25,7 @@
 *  under the License.
 */
 
-namespace Tests.AwsAuth
+namespace Tests.Auth.AwsSigV4
 {
 	using System;
 	using System.Linq;
@@ -34,7 +34,7 @@ namespace Tests.AwsAuth
 	using System.Web;
 	using Amazon.Runtime;
 	using FluentAssertions;
-	using OpenSearch.Net.AwsAuth;
+	using OpenSearch.Net.Auth.AwsSigV4;
 	using OpenSearch.OpenSearch.Xunit.XunitPlumbing;
 
 	public class CanonicalRequestTests

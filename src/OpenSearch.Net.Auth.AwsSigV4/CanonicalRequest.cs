@@ -25,7 +25,7 @@
 *  under the License.
 */
 
-namespace OpenSearch.Net.AwsAuth
+namespace OpenSearch.Net.Auth.AwsSigV4
 {
 	using System;
 	using System.Collections.Generic;

@@ -25,38 +25,38 @@
 *  under the License.
 */
 
-#if DOTNETCORE
-
-namespace OpenSearch.Net.AwsAuth
+namespace OpenSearch.Net.Auth.AwsSigV4
 {
 	using System;
-	using System.Net.Http;
-	using System.Threading;
-	using System.Threading.Tasks;
+	using System.Net;
 	using Amazon;
 	using Amazon.Runtime;
 
-	internal class AwsSigV4HttpClientHandler : DelegatingHandler
+	public class AwsSigV4HttpConnection : HttpConnection
 	{
 		private readonly AWSCredentials _credentials;
 		private readonly RegionEndpoint _region;
 
-		public AwsSigV4HttpClientHandler(AWSCredentials credentials, RegionEndpoint region, HttpMessageHandler innerHandler)
-			: base(innerHandler)
+		public AwsSigV4HttpConnection(AWSCredentials credentials, RegionEndpoint region)
 		{
 			_credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
 			_region = region ?? throw new ArgumentNullException(nameof(region));
 		}
 
-		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+#if DOTNETCORE
+
+		protected override System.Net.Http.HttpMessageHandler CreateHttpClientHandler(RequestData requestData) =>
+			new AwsSigV4HttpClientHandler(_credentials, _region, base.CreateHttpClientHandler(requestData));
+
+#else
+
+		protected override HttpWebRequest CreateHttpWebRequest(RequestData requestData)
 		{
-			var credentials = await _credentials.GetCredentialsAsync().ConfigureAwait(false);
-
-			await AwsSigV4Util.SignRequest(request, credentials, _region, DateTime.UtcNow).ConfigureAwait(false);
-
-			return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+			var request = base.CreateHttpWebRequest(requestData);
+			AwsSigV4Util.SignRequest(request, requestData, _credentials.GetCredentials(), _region, DateTime.UtcNow);
+			return request;
 		}
-	}
-}
 
 #endif
+	}
+}
